@@ -25,17 +25,20 @@ export default {
                 {
                     id: 1,
                     name: 'First project',
-                    complete: true
+                    complete: true,
+                    tag: 'Science'
                 },
                 {
                     id: 2,
                     name: 'Second project',
-                    complete: false
+                    complete: false,
+                    tag: 'Math'
                 },
                 {
                     id: 3,
                     name: 'Third project',
-                    complete: false
+                    complete: false,
+                    tag: 'Reading'
                 },
             ]
         }
