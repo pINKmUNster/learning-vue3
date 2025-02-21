@@ -5,67 +5,47 @@
     <title>Title</title>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes spinner {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .is-loading {
+            color: transparent;
+        }
+
+        .is-loading::before {
+            content: "";
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            margin-top: -12px;
+            margin-left: -12px;
+            border-radius: 50%;
+            border: 1px solid #f6f;
+            border-top-color: #0e0;
+            border-right-color: #0dd;
+            border-bottom-color: #f90;
+            animation: spinner 600ms linear infinite;
+        }
+    </style>
+
 </head>
 <body class="h-full grid place-items-center">
 <div id="app">
-    <section v-if="inProgressAssignments.length">
-        <h2 class="font-bold mb-2">In Progress </h2>
-        <ul>
-            <li v-for="assignment in inProgressAssignments" :key="assignment.id">
-                <label>
-                    <input type="checkbox" v-model="assignment.complete">
-                    {{ assignment.name }}
-                </label>
-            </li>
-        </ul>
-    </section>
-
-    <section class="mt-8" v-if="completedAssignments.length">
-        <h2 class="font-bold mb-2">Completed </h2>
-        <ul>
-            <li v-for="assignment in completedAssignments" :key="assignment.id">
-                <label>
-                    <input type="checkbox" v-model="assignment.complete">
-                    {{ assignment.name }}
-                </label>
-            </li>
-        </ul>
-    </section>
+    <app-button>Submit</app-button>
+    <app-button type="secondary" :processing="true">Submit</app-button>
+    <app-button type="muted">Submit</app-button>
 </div>
-<script>
-    let app = {
-        data() {
-            return {
-                assignments: [
-                    {
-                        id: 1,
-                        name: 'First project',
-                        complete: true
-                    },
-                    {
-                        id: 2,
-                        name: 'Second project',
-                        complete: false
-                    },
-                    {
-                        id: 3,
-                        name: 'Third project',
-                        complete: false
-                    },
-                ]
-            }
-        },
-        computed:{
-            inProgressAssignments(){
-                return this.assignments.filter(a => !a.complete)
-            },
-            completedAssignments(){
-                return this.assignments.filter(a => a.complete)
-            }
-        }
-    }
-    Vue.createApp(app).mount('#app')
-</script>
+<script type="module">
+    import App from "./js/components/App.js";
 
+    Vue.createApp(App).mount('#app')
+</script>
 </body>
 </html>
