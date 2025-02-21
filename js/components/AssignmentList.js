@@ -13,6 +13,7 @@ export default {
             <assignment-tags
                 :tags="this.assignments.map(a => a.tag)"
                 @change="currentTag = $event"   
+                :currentTag="currentTag"
             />
             <ul class="border boder-gray-600 rounded-lg p-4 divide-y divide-gray-600 mt-6">
                 <assignment 
