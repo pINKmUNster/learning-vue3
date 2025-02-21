@@ -1,4 +1,4 @@
-﻿import AssignmentList from './AssignmentList.js'
+import AssignmentList from './AssignmentList.js'
 import AssignmentCreate from "./AssignmentCreate.js";
 
 export default {
@@ -22,26 +22,14 @@ export default {
     data() {
         return {
             assignments: [
-                {
-                    id: 1,
-                    name: 'First project',
-                    complete: true,
-                    tag: 'Science'
-                },
-                {
-                    id: 2,
-                    name: 'Second project',
-                    complete: false,
-                    tag: 'Math'
-                },
-                {
-                    id: 3,
-                    name: 'Third project',
-                    complete: false,
-                    tag: 'Reading'
-                },
+
             ]
         }
+    },
+    created(){
+        fetch('http://localhost:3001/assignments')
+            .then(response => response.json())
+            .then(assignments => this.assignments = assignments)
     },
     methods:{
         add(newAssignment){
