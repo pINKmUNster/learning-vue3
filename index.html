@@ -5,42 +5,12 @@
     <title>Title</title>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes spinner {
-            to {
-                transform: rotate(360deg);
-            }
-        }
 
-        .is-loading {
-            color: transparent;
-        }
-
-        .is-loading::before {
-            content: "";
-            box-sizing: border-box;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 24px;
-            height: 24px;
-            margin-top: -12px;
-            margin-left: -12px;
-            border-radius: 50%;
-            border: 1px solid #f6f;
-            border-top-color: #0e0;
-            border-right-color: #0dd;
-            border-bottom-color: #f90;
-            animation: spinner 600ms linear infinite;
-        }
-    </style>
 
 </head>
 <body class="h-full grid place-items-center">
 <div id="app">
-    <app-button>Submit</app-button>
-    <app-button type="secondary" :processing="true">Submit</app-button>
-    <app-button type="muted">Submit</app-button>
+
 </div>
 <script type="module">
     import App from "./js/components/App.js";
