@@ -13,17 +13,20 @@ export default {
                 :assignments="filter.inProgress">
                 <assignmentCreate @create="add" ></assignmentCreate>
             </assignmentList>
-            <assignmentList 
+            <assignmentList
+                v-if="showCompleted"
                 title="Completed" 
-                :assignments="filter.completed">
+                :assignments="filter.completed"
+                can-toggle
+                @toggle="showCompleted = !showCompleted"
+                >
             </assignmentList>
         </section>
     `,
     data() {
         return {
-            assignments: [
-
-            ]
+            assignments: [],
+            showCompleted: true
         }
     },
     created(){
