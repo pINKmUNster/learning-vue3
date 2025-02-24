@@ -7,17 +7,17 @@ export default {
         AssignmentCreate,
     },
     template: `   
-       <section class="space-y-6">
+       <section class="flex gap-8">
             <assignmentList 
                 title="In Progress" 
                 :assignments="filter.inProgress">
+                <assignmentCreate @create="add" ></assignmentCreate>
             </assignmentList>
             <assignmentList 
                 title="Completed" 
                 :assignments="filter.completed">
             </assignmentList>
         </section>
-        <assignmentCreate @create="add" ></assignmentCreate>
     `,
     data() {
         return {
